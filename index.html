@@ -149,6 +149,30 @@
                 font-size: 0.95rem; /* Police légèrement réduite */
             }
         }
+        /* --- CORRECTION BUG MOBILE FOOTER --- */
+@media (max-width: 768px) {
+    /* 1. Force la coupure de l'adresse mail trop longue */
+    .footer-info p {
+        word-break: break-word;
+        overflow-wrap: break-word;
+    }
+
+    /* 2. Empêche la zone globale du footer de s'étirer */
+    .footer-grid {
+        width: 100%;
+        max-width: 100vw;
+        overflow-x: hidden;
+    }
+
+    /* 3. Ajuste les boutons et autorise le texte à passer sur 2 lignes */
+    .btn-call, .btn-whatsapp {
+        width: 100%;
+        padding: 12px 10px;
+        font-size: 0.85rem; /* Police un peu plus petite */
+        white-space: normal; /* Le secret pour que le texte ne pousse pas les bords */
+        line-height: 1.4;
+    }
+}
 
         /* Spécifique aux très petits téléphones (iPhone SE, etc.) */
         @media (max-width: 480px) {
