@@ -9,6 +9,44 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
+        /* --- SÉCURITÉ MOBILE : ZÉRO DÉBORDEMENT ET TEXTE PROPRE --- */
+@media (max-width: 768px) {
+    /* 1. On verrouille la page pour empêcher le scroll horizontal */
+    html, body {
+        overflow-x: hidden;
+        width: 100%;
+    }
+
+    /* 2. On contient la grille du footer */
+    .footer-grid {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0 10px;
+    }
+
+    /* 3. On baisse la taille du texte et on empêche les coupures sauvages */
+    .footer-info p {
+        font-size: 0.85rem; /* Taille réduite pour tout faire rentrer */
+        word-break: normal; /* Interdit de couper en plein milieu d'un mot */
+        overflow-wrap: break-word; /* Le mail ira à la ligne proprement si l'écran est minuscule */
+        display: flex;
+        flex-direction: column; /* L'icône passe au-dessus du texte pour gagner de la largeur */
+        align-items: center;
+        text-align: center;
+        gap: 5px;
+        margin-bottom: 25px;
+    }
+
+    /* 4. On assouplit les boutons pour qu'ils s'adaptent */
+    .btn-call, .btn-whatsapp {
+        width: 100%;
+        box-sizing: border-box;
+        font-size: 0.9rem; /* Police réduite */
+        padding: 15px 10px;
+        white-space: normal; /* Autorise le texte du bouton à passer sur 2 lignes entières */
+        line-height: 1.4;
+    }
+}
         /* DESIGN SYSTEM & VARIABLES */
         :root {
             --sage-green: #425B49;
