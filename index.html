@@ -152,8 +152,22 @@
         /* --- CORRECTION BUG MOBILE FOOTER --- */
 @media (max-width: 768px) {
     /* 1. Force la coupure de l'adresse mail trop longue */
+    ./* 1. Optimisation aérée des contacts pour mobile */
     .footer-info p {
-        line-break: anywhere;
+        font-size: 0.9rem; /* Légèrement plus petit pour la fluidité */
+        word-break: keep-all; /* Pas de coupure sauvage au milieu des mots */
+        display: flex;
+        flex-direction: column; /* Icône au-dessus, texte en dessous */
+        align-items: center; /* Centre le tout */
+        gap: 8px; /* Espace fluide entre l'icône et le texte */
+        margin-bottom: 25px; /* Donne de l'air entre chaque bloc de contact */
+        text-align: center;
+    }
+
+    /* Ajustement de l'icône pour le look vertical */
+    .footer-info p i {
+        font-size: 1.2rem; /* Rend l'icône un peu plus visible */
+        margin: 0; /* Enlève l'ancienne marge sur le côté */
     }
 
     /* 2. Empêche la zone globale du footer de s'étirer */
