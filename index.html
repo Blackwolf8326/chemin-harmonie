@@ -9,44 +9,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        /* --- SÉCURITÉ MOBILE : ZÉRO DÉBORDEMENT ET TEXTE PROPRE --- */
-@media (max-width: 768px) {
-    /* 1. On verrouille la page pour empêcher le scroll horizontal */
-    html, body {
-        overflow-x: hidden;
-        width: 100%;
-    }
-
-    /* 2. On contient la grille du footer */
-    .footer-grid {
-        width: 100%;
-        box-sizing: border-box;
-        padding: 0 10px;
-    }
-
-    /* 3. On baisse la taille du texte et on empêche les coupures sauvages */
-    .footer-info p {
-        font-size: 0.85rem; /* Taille réduite pour tout faire rentrer */
-        word-break: normal; /* Interdit de couper en plein milieu d'un mot */
-        overflow-wrap: break-word; /* Le mail ira à la ligne proprement si l'écran est minuscule */
-        display: flex;
-        flex-direction: column; /* L'icône passe au-dessus du texte pour gagner de la largeur */
-        align-items: center;
-        text-align: center;
-        gap: 5px;
-        margin-bottom: 25px;
-    }
-
-    /* 4. On assouplit les boutons pour qu'ils s'adaptent */
-    .btn-call, .btn-whatsapp {
-        width: 100%;
-        box-sizing: border-box;
-        font-size: 0.9rem; /* Police réduite */
-        padding: 15px 10px;
-        white-space: normal; /* Autorise le texte du bouton à passer sur 2 lignes entières */
-        line-height: 1.4;
-    }
-}
         /* DESIGN SYSTEM & VARIABLES */
         :root {
             --sage-green: #425B49;
@@ -187,43 +149,39 @@
                 font-size: 0.95rem; /* Police légèrement réduite */
             }
         }
-        /* --- CORRECTION BUG MOBILE FOOTER --- */
-@media (max-width: 768px) {
-    /* 1. Force la coupure de l'adresse mail trop longue */
-    ./* 1. Optimisation aérée des contacts pour mobile */
-    .footer-info p {
-        font-size: 0.9rem; /* Légèrement plus petit pour la fluidité */
-        word-break: keep-all; /* Pas de coupure sauvage au milieu des mots */
-        display: flex;
-        flex-direction: column; /* Icône au-dessus, texte en dessous */
-        align-items: center; /* Centre le tout */
-        gap: 8px; /* Espace fluide entre l'icône et le texte */
-        margin-bottom: 25px; /* Donne de l'air entre chaque bloc de contact */
-        text-align: center;
-    }
+        @media (max-width: 768px) {
+            /* 1. Verrouillage absolu de la largeur de l'écran */
+            html, body {
+                max-width: 100vw;
+                overflow-x: hidden;
+            }
 
-    /* Ajustement de l'icône pour le look vertical */
-    .footer-info p i {
-        font-size: 1.2rem; /* Rend l'icône un peu plus visible */
-        margin: 0; /* Enlève l'ancienne marge sur le côté */
-    }
+            /* 2. Le vrai coupable : on confine le tableau pour qu'il scrolle en interne sans pousser la page */
+            .tarifs-wrapper {
+                width: 100%;
+                max-width: 100vw;
+            }
 
-    /* 2. Empêche la zone globale du footer de s'étirer */
-    .footer-grid {
-        width: 100%;
-        max-width: 100vw;
-        overflow-x: hidden;
-    }
+            h1 { font-size: 2.5rem; }
+            .section-title { font-size: 2rem; }
+            .side-menu { width: 100%; border-radius: 0; }
+            .presentation-carousel-container, .presentation-img { height: 350px; }
 
-    /* 3. Ajuste les boutons et autorise le texte à passer sur 2 lignes */
-    .btn-call, .btn-whatsapp {
-        width: 100%;
-        padding: 12px 10px;
-        font-size: 0.85rem; /* Police un peu plus petite */
-        white-space: normal; /* Le secret pour que le texte ne pousse pas les bords */
-        line-height: 1.4;
-    }
-}
+            /* 3. On autorise l'adresse mail à se couper proprement si besoin */
+            .footer-info p {
+                font-size: 0.9rem;
+                line-break: anywhere; 
+                word-break: break-word;
+            }
+
+            /* 4. On garde ton design de bouton intact, on l'autorise juste à s'adapter */
+            .btn-call, .btn-whatsapp {
+                padding: 15px 10px;
+                font-size: 0.85rem;
+                white-space: normal; /* Le texte ira sur 2 lignes tout seul s'il manque de place */
+                height: auto;
+            }
+        }
 
         /* Spécifique aux très petits téléphones (iPhone SE, etc.) */
         @media (max-width: 480px) {
